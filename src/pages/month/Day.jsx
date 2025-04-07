@@ -11,6 +11,7 @@ import ErrorPage from '../../components/ErrorPage';
 function Day() {
   const { city } = useWeather()
   const { data, isLoading, error } = useGetdata(city);
+  console.log(data)
   if (isLoading) return (
     <Looader/>
   )
@@ -23,7 +24,7 @@ function Day() {
     <Wrapper bgCol={holat} lightR={holat == 'light rain' ? bgimg : holat == 'broken clouds' ? clouds : holat == 'overcast clouds' ? nclouds : holat == 'clear sky' ? clearSky : ''} className='wrap'>
       <Card >
         <h2>{data.name} ob-havosi</h2>
-        <Temp>Harorat {data.main.temp}°C</Temp>
+        <Temp>Harorat {localStorage.getItem('dayC')}°C</Temp>
         <h2>{holat}</h2>
         <Info>
           <p>🌬 Shamol: {data.wind.speed} m/s</p>
