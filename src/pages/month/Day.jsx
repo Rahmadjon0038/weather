@@ -11,7 +11,6 @@ import ErrorPage from '../../components/ErrorPage';
 function Day() {
   const { city } = useWeather()
   const { data, isLoading, error } = useGetdata(city);
-  console.log(data)
   if (isLoading) return (
     <Looader/>
   )

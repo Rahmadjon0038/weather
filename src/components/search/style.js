@@ -6,7 +6,14 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     margin-top: 5px;
+
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+  
 `
+
 const Input = styled.input`
     width: 100;
     width: 100%;
