@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useWeeklyForecast } from "../../utils/server";
-import { motion } from "framer-motion"; // Animatsiya uchun framer-motion kutubxonasi
-import { WiDaySunny, WiCloudy, WiRain, WiDayCloudy } from "react-icons/wi"; // Ob-havo ikonkalari uchun react-icons
-
-// Styled Components
+import { motion } from "framer-motion"; 
+import { WiDaySunny, WiCloudy, WiRain, WiDayCloudy } from "react-icons/wi";
 import styled from "styled-components";
 import { useWeather } from "../../components/context/WeatherContext";
+import { Loading } from "../month/style";
 
 const Container = styled.div`
 padding-top: 100px;
@@ -86,7 +85,7 @@ const InfoContainer = styled.div`
 
 function Week() {
     const { city } = useWeather();
-    const { data } = useWeeklyForecast(city);
+    const { data,isLoading } = useWeeklyForecast(city);
     const [weeklyForecast, setWeeklyForecast] = useState([]);
     localStorage.setItem('dayC',weeklyForecast[0]?.avgTemp)
 
@@ -133,15 +132,10 @@ function Week() {
         }
     }, [data]);
 
-    if (!data) {
-        return (
-            <div className="text-white text-center">
-                <h1>Ma'lumot yuklanmoqda...</h1>
-            </div>
-        );
-    }
+   if(isLoading) return(
+    <Loading/>
+   )
 
-    // Ob-havo holatiga qarab ikonka tanlash
     const getWeatherIcon = (weather) => {
         switch (weather) {
             case "light rain":
