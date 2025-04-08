@@ -11,11 +11,10 @@ function Navbar() {
       <h1 onClick={() => navigate('/')}><Img src={logo} /> Ob havo uz</h1>
       <Serarch />
       <Nav>
-      <IoIosSearch/>
-        <NavLink to={'/day'} className={({ isActive }) => isActive ? 'link1' : "link"}>Bir kunlik</NavLink>
+        {/* <IoIosSearch/> */}
         <NavLink to={'/week'} className={({ isActive }) => isActive ? 'link1' : "link"}>Bir haftalik</NavLink>
       </Nav>
-      meni
+
     </Container>
   )
 }
